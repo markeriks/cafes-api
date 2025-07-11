@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TalTech Kohvikud</title>
+</head>
+<body>
+    <h1>Muuda kohviku andmeid</h1>
+    <form action="{{ url_for('update_cafe', cafe_id=cafe.id) }}" method="POST">
+
+        <label for="name">Kohviku nimi:</label>
+        <input type="text" id="name" name="name" value="{{ cafe.name }}" required><br>
+        <label for="location">Asukoht:</label>
+        <input type="text" id="location" name="location" value="{{ cafe.location }}" required><br>
+        <label for="teenusepakkuja">Teenusepakkuja:</label>
+        <input type="text" id="teenusepakkuja" name="teenusepakkuja" required><br>
+        <label for="time_open">Avamisaeg:</label>
+        <input type="text" id="time_open" name="time_open" value="{{ cafe.time_open }}" required><br>
+        <label for="time_closed">Sulgemisaeg:</label>
+        <input type="text" id="time_closed" name="time_closed" value="{{ cafe.time_closed }}" required><br>
+        <button type="submit">Muuda</button>
+    </form>
+
+</body>
+
+</html>

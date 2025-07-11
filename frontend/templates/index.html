@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TalTech Kohvikud</title>
+</head>
+<body>
+    <h1>Kohvikud</h1>
+
+    <a href="{{ url_for('search') }}">Päring avamisaja järgi</a>
+
+    <h2>Lisa uus kohvik:</h2>
+        <form action="{{ url_for('add_cafe') }}" method="POST">
+            <label for="name">Kohviku nimi:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="location">Asukoht:</label>
+            <input type="text" id="location" name="location" required><br>
+            <label for="teenusepakkuja">Teenusepakkuja:</label>
+            <input type="text" id="teenusepakkuja" name="teenusepakkuja" required><br>
+            <label for="time_open">Avamisaeg:</label>
+            <input type="text" id="time_open" name="time_open" required><br>
+            <label for="time_closed">Sulgemisaeg:</label>
+            <input type="text" id="time_closed" name="time_closed" required><br>
+            <button type="submit">Lisa kohvik</button>
+        </form>
+
+    <h2>Kohvikud:</h2>
+
+    <ul>
+        {% for cafe in cafes%}
+        <li>
+            <strong>{{cafe.name}}</strong> - {{cafe.location}} - {{cafe.teenusepakkuja}} - Avatud: {{cafe.time_open}} - Suletud: {{cafe.time_closed}}
+
+            <a href="{{ url_for('update_cafe', cafe_id=cafe.id) }}">
+                <button>Muuda</button>
+            </a>
+
+            <form action="{{ url_for('delete_cafe', cafe_id=cafe.id) }}" method="POST">
+                <button type="submit">Kustuta</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+
+</html>

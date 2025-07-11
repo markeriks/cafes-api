@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TalTech Kohvikud</title>
+</head>
+<body>
+    <h1>Päring avamisaja järgi</h1>
+    <form action="{{ url_for('search') }}" method="POST">
+    <label for="open_time">Sisesta avamisaja kellaaeg (nt 08:30):</label>
+    <input type="text" id="open_time" name="open_time" required>
+    <button type="submit">Päring</button>
+
+    <ul>
+        {% for cafe in cafes%}
+        <li>
+            {{cafe.name}} - {{cafe.location}} - {{cafe.teenusepakkuja}} - Avatud: {{cafe.time_open}} - Suletud: {{cafe.time_closed}}
+        </li>
+        {% endfor %}
+    </ul>
+
+
+</body>
+
+</html>
